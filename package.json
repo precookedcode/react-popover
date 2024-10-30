@@ -1,6 +1,6 @@
 {
   "name": "@precooked/react-popover",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A simple and flexible React Popover component designed to work with any clickable element.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
