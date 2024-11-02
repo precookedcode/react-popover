@@ -42,14 +42,15 @@ const Popover: React.FC<PopoverProps> = ({
         if (isOpen && anchorRef.current) {
             const rect = anchorRef.current.getBoundingClientRect();
             setPopoverPosition({
-                top: rect.bottom + 10,  // Añadir 10px de margen debajo del botón
-                right: window.innerWidth - rect.right,  // Alinear el popover a la derecha, como el botón
+                top: rect.bottom + 10 + window.scrollY,  // Añadir 10px de margen y considerar scroll vertical
+                right: window.innerWidth - rect.right - window.scrollX  // Alinear a la derecha y considerar scroll horizontal
             });
             setIsVisible(true);
         } else {
             setIsVisible(false);
         }
     }, [isOpen, anchorRef]);
+
 
     if (!isOpen || !popoverPosition) return null;
 
