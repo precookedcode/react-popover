@@ -6,8 +6,8 @@ interface PopoverProps {
     anchorRef: React.RefObject<HTMLElement>;  // Reference to the clickable element
     isOpen: boolean;                          // Controls when to show the popover
     onClose: () => void;                      // Function to close the popover
-    containerStyles?: React.CSSProperties;    // Custom styles for the popover
-    backdropStyles?: React.CSSProperties;     // Custom styles for the background overlay
+    containerStyle?: React.CSSProperties;    // Custom styles for the popover
+    backdropStyle?: React.CSSProperties;     // Custom styles for the background overlay
     hasShadow?: boolean;                      // If true, the popover will have a shadow
 }
 
@@ -16,8 +16,8 @@ const Popover: React.FC<PopoverProps> = ({
     anchorRef,
     isOpen,
     onClose,
-    containerStyles = {},  // Default is an empty object
-    backdropStyles = {},   // Default is an empty object
+    containerStyle = {},  // Default is an empty object
+    backdropStyle = {},   // Default is an empty object
     hasShadow = true       // Default value is true, meaning the popover will have a shadow
 }) => {
     const [popoverPosition, setPopoverPosition] = useState<{ top: number; right: number } | null>(null);
@@ -67,7 +67,7 @@ const Popover: React.FC<PopoverProps> = ({
                     height: '100vh',
                     backgroundColor: 'rgba(0, 0, 0, 0.1)',  // Fondo semitransparente por defecto
                     zIndex: 999,  // Debajo del popover
-                    ...backdropStyles  // Sobrescribir estilos del fondo si se pasan
+                    ...backdropStyle  // Sobrescribir estilos del fondo si se pasan
                 }}
             />
             {/* Popover */}
@@ -85,7 +85,7 @@ const Popover: React.FC<PopoverProps> = ({
                     opacity: isVisible ? 1 : 0,
                     transform: isVisible ? 'translateY(0)' : 'translateY(-10px)', // Animación de entrada/salida
                     boxShadow: hasShadow ? "0px 4px 12px rgba(0, 0, 0, 0.15)" : "none", // Añadir sombra si hasShadow es true
-                    ...containerStyles  // Sobrescribir estilos del popover si se pasan
+                    ...containerStyle  // Sobrescribir estilos del popover si se pasan
                 }}
             >
                 {content}
